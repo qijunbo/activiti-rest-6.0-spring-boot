@@ -35,27 +35,27 @@ public class ActivitiEngineConfiguration {
     }
 
     @Bean(name = "transactionManager")
-    public PlatformTransactionManager annotationDrivenTransactionManager() {
+    public PlatformTransactionManager annotationDrivenTransactionManager(DataSource dataSource) {
         DataSourceTransactionManager transactionManager = new DataSourceTransactionManager();
-        transactionManager.setDataSource(dataSource());
+        transactionManager.setDataSource(dataSource);
         return transactionManager;
     }
 
     @Bean
-    public ProcessEngineFactoryBean processEngineFactoryBean() {
+    public ProcessEngineFactoryBean processEngineFactoryBean(ProcessEngineConfigurationImpl config) {
         ProcessEngineFactoryBean factoryBean = new ProcessEngineFactoryBean();
-        factoryBean.setProcessEngineConfiguration(processEngineConfiguration());
+        factoryBean.setProcessEngineConfiguration(config);
         return factoryBean;
     }
 
     @Bean
-    public ProcessEngine processEngine() {
+    public ProcessEngine processEngine(ProcessEngineFactoryBean bean) {
         // Safe to call the getObject() on the @Bean annotated
         // processEngineFactoryBean(), will be
         // the fully initialized object instanced from the factory and will NOT
         // be created more than once
         try {
-            ProcessEngine engine = processEngineFactoryBean().getObject();
+            ProcessEngine engine = bean.getObject();
             if (log.isDebugEnabled()) {
                 log.debug(String.format("ProcessEngine [%s] Version: [%s]", engine.getName(), ProcessEngine.VERSION));
             }
@@ -67,44 +67,47 @@ public class ActivitiEngineConfiguration {
 
     @Bean
     @ConfigurationProperties(prefix = "mysql.activiti")
-    public ProcessEngineConfigurationImpl processEngineConfiguration() {
+    public ProcessEngineConfigurationImpl processEngineConfiguration(DataSource dataSource,
+            PlatformTransactionManager transactionManager) {
         SpringProcessEngineConfiguration cfg = new SpringProcessEngineConfiguration();
-        cfg.setDataSource(dataSource());
+        cfg.setDataSource(dataSource);
+        cfg.setTransactionManager(transactionManager);
         return cfg;
     }
 
     @Bean
-    public RepositoryService repositoryService() {
-        return processEngine().getRepositoryService();
+    public RuntimeService createRuntimeService(ProcessEngine processEngine) {
+        return processEngine.getRuntimeService();
     }
 
     @Bean
-    public RuntimeService runtimeService() {
-        return processEngine().getRuntimeService();
+    public RepositoryService createRepositoryService(ProcessEngine processEngine) {
+        return processEngine.getRepositoryService();
     }
 
     @Bean
-    public TaskService taskService() {
-        return processEngine().getTaskService();
+    public TaskService createTaskService(ProcessEngine processEngine) {
+        return processEngine.getTaskService();
     }
 
     @Bean
-    public HistoryService historyService() {
-        return processEngine().getHistoryService();
+    public ManagementService createManagementService(ProcessEngine processEngine) {
+        return processEngine.getManagementService();
     }
 
     @Bean
-    public FormService formService() {
-        return processEngine().getFormService();
+    public IdentityService createIdentityService(ProcessEngine processEngine) {
+        return processEngine.getIdentityService();
     }
 
     @Bean
-    public IdentityService identityService() {
-        return processEngine().getIdentityService();
+    public HistoryService createHistoryService(ProcessEngine processEngine) {
+        return processEngine.getHistoryService();
     }
 
     @Bean
-    public ManagementService managementService() {
-        return processEngine().getManagementService();
+    public FormService createFormService(ProcessEngine processEngine) {
+        return processEngine.getFormService();
     }
+
 }
