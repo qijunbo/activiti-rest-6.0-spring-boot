@@ -1,4 +1,4 @@
-package com.example.activiti.conf;
+package com.sunway.activiti.conf;
 
 import org.activiti.rest.common.application.ContentTypeResolver;
 import org.activiti.rest.common.application.DefaultContentTypeResolver;

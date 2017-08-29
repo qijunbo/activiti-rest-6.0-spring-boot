@@ -4,7 +4,7 @@
 
 
 	<contextName>activiti-rest-service</contextName>
-	<property name="APP_LOG_HOME" scope="context" value="./evep-log" />
+	<property name="APP_LOG_HOME" scope="context" value="./app-log" />
 
 	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 		<layout class="ch.qos.logback.classic.PatternLayout">
@@ -16,7 +16,7 @@
 
 	<appender name="APP_FILE"
 		class="ch.qos.logback.core.rolling.RollingFileAppender">
-		<file>${APP_LOG_HOME}/payment.log</file>
+		<file>${APP_LOG_HOME}/activiti.log</file>
 		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
 			<FileNamePattern>${APP_LOG_HOME}/activiti.%d{yyyy-MM-dd}.%i.log
 			</FileNamePattern>
@@ -42,7 +42,7 @@
 		<appender-ref ref="APP_FILE" />
 		<appender-ref ref="STDOUT" />
 	</logger>
-	<logger name="org.apache.wink.server.internal.log" additivity="false">
+	<logger name="com.sunway.activiti" additivity="false">
 		<level value="DEBUG" />
 		<appender-ref ref="APP_FILE" />
 		<appender-ref ref="STDOUT" />

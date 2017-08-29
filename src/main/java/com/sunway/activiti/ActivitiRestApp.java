@@ -1,4 +1,4 @@
-package com.example.activiti;
+package com.sunway.activiti;
 
 import java.util.List;
 
@@ -10,10 +10,10 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ActivitiRestService {
+public class ActivitiRestApp {
 
     public static void main(String[] args) {
-        SpringApplication.run(ActivitiRestService.class);
+        SpringApplication.run(ActivitiRestApp.class);
     }
 
     @Autowired

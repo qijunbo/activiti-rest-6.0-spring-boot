@@ -1,4 +1,4 @@
-package com.example.activiti.conf;
+package com.sunway.activiti.conf;
 
 import org.activiti.rest.security.BasicAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;

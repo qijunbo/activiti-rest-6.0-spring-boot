@@ -1,4 +1,4 @@
-package com.example.activiti.conf;
+package com.sunway.activiti.conf;
 
 import java.util.List;
 

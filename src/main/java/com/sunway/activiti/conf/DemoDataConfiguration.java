@@ -11,7 +11,7 @@
  * limitations under the License.
  */
 
-package com.example.activiti.conf;
+package com.sunway.activiti.conf;
 
 import java.io.InputStream;
 import java.util.Arrays;
