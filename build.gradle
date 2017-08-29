@@ -1,0 +1,67 @@
+buildscript {
+
+    ext {
+        activitiVersion = '6.0.0'
+    }
+	
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.3.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'activiti-rest-api'
+}
+
+repositories {
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
+    maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
+    mavenCentral()
+    
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+
+ 	[
+        "org.springframework:spring-context",
+        "org.springframework.boot:spring-boot-starter-web",
+        "org.springframework.boot:spring-boot-starter-data-jpa"
+    ].each { dep ->
+        compile(dep) {
+        	exclude module: "slf4j-log4j12"
+            exclude module: "spring-boot-starter-logging"
+            exclude module: "logback-classic"
+            exclude module: "slf4j-api"
+        }
+    }
+
+
+    //compile("org.springframework.boot:spring-boot-starter-web")
+    //compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    //compile("com.h2database:h2")
+    compile("mysql:mysql-connector-java:5.1.43")
+    compile("org.activiti:activiti-engine:${activitiVersion}")
+    compile("org.activiti:activiti-spring:${activitiVersion}")
+    compile("org.activiti:activiti-rest:${activitiVersion}")
+    compile("org.activiti:activiti-json-converter:${activitiVersion}")
+	
+    compile("com.zaxxer:HikariCP:2.4.6")
+    compile("org.codehaus.groovy:groovy-all")
+    //compile("org.slf4j:slf4j-api:1.7.15")
+	//providedRuntime("org.apache.tomcat:tomcat-catalina:8.0.23")
+    //providedRuntime("javax.servlet:javax.servlet-api:3.1.0")
+   	//testCompile("org.springframework.boot:spring-boot-starter-test")
+	//providedRuntime("org.springframework.boot:spring-boot-starter-tomcat")  
+}
+
