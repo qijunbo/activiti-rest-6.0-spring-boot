@@ -23,6 +23,7 @@ jar {
 
 repositories {
     maven { url 'http://maven.aliyun.com/nexus/content/repositories/central/' }
+    maven { url "http://www.datanucleus.org/downloads/maven2" }
     maven { url "https://repository.jboss.org/nexus/content/repositories/releases" }
     mavenCentral()
     
@@ -43,6 +44,7 @@ dependencies {
             exclude module: "spring-boot-starter-logging"
             exclude module: "logback-classic"
             exclude module: "slf4j-api"
+            exclude module: "juel-spi"
         }
     }
 
