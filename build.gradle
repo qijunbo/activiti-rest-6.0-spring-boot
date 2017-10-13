@@ -12,11 +12,21 @@ buildscript {
     }
 }
 
-apply plugin: 'war'
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'eclipse-wtp'
+//apply plugin: 'eclipse-wtp'
 apply plugin: 'org.springframework.boot'
+
+tasks.withType(JavaCompile) {
+    options.encoding = "UTF-8"
+}
+
+//sourceSets.main.resources.srcDirs = ['src/main/webapp','src/main/resources']
+
+springBoot {
+    mainClass = 'com.sunway.activiti.ActivitiRestApp'
+    executable = true
+}
 
 jar {
     baseName = 'activiti-rest-api'
@@ -61,10 +71,11 @@ dependencies {
 	
     compile("com.zaxxer:HikariCP:2.4.6")
     compile("org.codehaus.groovy:groovy-all")
+	
     //compile("org.slf4j:slf4j-api:1.7.15")
 	//providedRuntime("org.apache.tomcat:tomcat-catalina:8.0.23")
     //providedRuntime("javax.servlet:javax.servlet-api:3.1.0")
    	//testCompile("org.springframework.boot:spring-boot-starter-test")
-	providedRuntime ("org.springframework.boot:spring-boot-starter-tomcat") 
+	//providedRuntime ("org.springframework.boot:spring-boot-starter-tomcat") 
 }
 

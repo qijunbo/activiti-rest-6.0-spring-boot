@@ -2,6 +2,24 @@
 
 这个项目采用了activiti 6.0 release版官方提供的activiti-rest 接口包,  并用spring-boot进行封装, 最终的到了一个可以独立运行的微服务.
 
+采用 Basic Authentication
+
+测试用户名/密码:
+
+<table width="100%">
+<tr><th>login Name</th><th>Username</th> <th> Email </th><th> Password</th></tr>
+<tr><td>fozzie</td><td>Fozzie Bear	    </td><td>fozzie@activiti.org </td><td> fozzie	</td></tr>
+<tr><td>gonzo</td> <td>Gonzo The Great	</td><td>gonzo@activiti.org	 </td><td>gonzo	</td></tr>
+<tr><td>kermit</td><td>Kermit The Frog	</td><td>kermit@activiti.org </td><td> kermit	</td></tr>
+</table>
+
+
+Try
+--
+
+[http://localhost/repository/deployments](http://localhost/repository/deployments)
+
+
 以下是所有接口的定义.
 
 Deployment 
