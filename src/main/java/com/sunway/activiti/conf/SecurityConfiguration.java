@@ -47,7 +47,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
       } else {
         httpSecurity
           .authorizeRequests()
-        //  .antMatchers("/docs/**").denyAll()
+          .antMatchers("/docs/**").denyAll()
           .anyRequest()
           .authenticated().and().httpBasic();
       }
