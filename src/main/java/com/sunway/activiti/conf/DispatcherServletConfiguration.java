@@ -17,6 +17,8 @@ import org.springframework.web.servlet.config.annotation.ContentNegotiationConfi
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurationSupport;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
+import org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter;
+import org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter;
 import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -42,7 +44,17 @@ public class DispatcherServletConfiguration extends WebMvcConfigurationSupport {
     public SessionLocaleResolver localeResolver() {
         return new SessionLocaleResolver();
     }
-
+    
+    @Bean
+    public HttpRequestHandlerAdapter httpRequestHandlerAdapter() {
+        return new HttpRequestHandlerAdapter();
+    }
+     
+    @Bean
+    public SimpleControllerHandlerAdapter simpleControllerHandlerAdapter(){
+        return new SimpleControllerHandlerAdapter();
+    }
+    
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         log.debug("Configuring localeChangeInterceptor");
