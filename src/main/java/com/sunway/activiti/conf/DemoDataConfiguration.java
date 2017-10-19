@@ -159,13 +159,20 @@ public class DemoDataConfiguration {
                 .list();
 
         if (deploymentList == null || deploymentList.isEmpty()) {
+
+            //@formatter:off
             repositoryService.createDeployment().name(deploymentName)
                     .addClasspathResource("createTimersProcess.bpmn20.xml")
                     .addClasspathResource("oneTaskProcess.bpmn20.xml")
-                    .addClasspathResource("VacationRequest.bpmn20.xml").addClasspathResource("VacationRequest.png")
+                    .addClasspathResource("VacationRequest.bpmn20.xml")
+                    .addClasspathResource("VacationRequest.png")
                     .addClasspathResource("FixSystemFailureProcess.bpmn20.xml")
-                    .addClasspathResource("FixSystemFailureProcess.png").addClasspathResource("Helpdesk.bpmn20.xml")
-                    .addClasspathResource("Helpdesk.png").addClasspathResource("reviewSalesLead.bpmn20.xml").deploy();
+                    .addClasspathResource("FixSystemFailureProcess.png")
+                    .addClasspathResource("Helpdesk.bpmn20.xml")
+                    .addClasspathResource("Helpdesk.png")
+                    .addClasspathResource("reviewSalesLead.bpmn20.xml")
+                    .deploy();
+            //@formatter:on
         }
     }
 

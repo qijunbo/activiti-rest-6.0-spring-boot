@@ -19,7 +19,6 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
-import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.transaction.PlatformTransactionManager;
 
 @Configuration
@@ -27,11 +26,6 @@ public class ActivitiEngineConfiguration {
 
     private final Logger log = LoggerFactory.getLogger(ActivitiEngineConfiguration.class);
 
-    @Bean
-    @ConfigurationProperties(prefix = "app.datasource")
-    public DataSource dataSource() {
-        return new DriverManagerDataSource();
-    }
 
     @Bean(name = "transactionManager")
     public PlatformTransactionManager annotationDrivenTransactionManager(DataSource dataSource) {
@@ -65,7 +59,7 @@ public class ActivitiEngineConfiguration {
     }
 
     @Bean
-    @ConfigurationProperties(prefix = "mysql.activiti")
+    @ConfigurationProperties(prefix = "cfg.activiti")
     public ProcessEngineConfigurationImpl processEngineConfiguration(DataSource dataSource,
             PlatformTransactionManager transactionManager) {
         SpringProcessEngineConfiguration cfg = new SpringProcessEngineConfiguration();
