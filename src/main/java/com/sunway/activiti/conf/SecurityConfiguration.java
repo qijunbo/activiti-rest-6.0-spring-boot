@@ -19,13 +19,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
   public AuthenticationProvider authenticationProvider() {
     return new BasicAuthenticationProvider();
   }
-
-  /*@Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http.authenticationProvider(authenticationProvider()).sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().csrf().disable().authorizeRequests().anyRequest()
-        .authenticated().and().httpBasic();
-  }*/
-  
+ 
   @Autowired
   protected Environment environment;
 
