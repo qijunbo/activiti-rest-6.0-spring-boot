@@ -71,7 +71,9 @@ dependencies {
 	
     compile("com.zaxxer:HikariCP:2.4.6")
     compile("org.codehaus.groovy:groovy-all")
-	compile("com.mangofactory:swagger-springmvc:1.0.2")
+    
+    compile("io.springfox:springfox-swagger2:2.7.0")
+    compile("io.springfox:springfox-swagger-ui:2.7.0")
 	
     //compile("org.slf4j:slf4j-api:1.7.15")
 	//providedRuntime("org.apache.tomcat:tomcat-catalina:8.0.23")

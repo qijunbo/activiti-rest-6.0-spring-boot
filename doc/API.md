@@ -1,6 +1,29 @@
 # activiti-rest-6.0 API
 
 
+临时部署指南
+--
+
+```
+docker pull swaggerapi/swagger-ui
+docker run --name swagger-ui -d -p 8001:8080 swaggerapi/swagger-ui
+
+docker run -p 80:8080 -e SWAGGER_JSON=/foo/swagger.json -v /bar:/foo swaggerapi/swagger-ui
+docker run -p 80:8080 -e SWAGGER_JSON=/foo/swagger.json  swaggerapi/swagger-ui
+```
+
+
+Reference:
+
+https://github.com/swagger-api/swagger-ui
+
+https://stackoverflow.com/questions/31473420/make-an-http-post-authentication-basic-request-using-javascript
+
+
+
+
+
+
 以下是所有接口的定义.
 
 
