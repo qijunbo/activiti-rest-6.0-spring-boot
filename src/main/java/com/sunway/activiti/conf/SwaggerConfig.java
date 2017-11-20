@@ -20,6 +20,7 @@ public class SwaggerConfig {
 		//@formatter:off
 		return new Docket(DocumentationType.SWAGGER_2)
 				.select()
+				// "org.activiti.rest.service.api"
 				.apis(RequestHandlerSelectors.basePackage("org.activiti.rest"))
 				//.paths(PathSelectors.ant("/api/*"))
 				.paths(PathSelectors.any())

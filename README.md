@@ -32,6 +32,8 @@ Test
 [http://localhost/repository/deployments](http://localhost/repository/deployments)
 
 API Document:
+
+[Swagger UI 文档](doc/API.md)
  
 https://www.activiti.org/userguide/6.latest/#_rest_api
  
